@@ -30,15 +30,20 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
+import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+
+
 export default function Edit() {
 	const currentYear = new Date().getFullYear().toString();
 
     return (
 		<>
             <InspectorControls>
-                Testing
+                <PanelBody title={ __( 'Settings', 'copyright-date-block' ) }>
+                    Testing
+                </PanelBody>
             </InspectorControls>
-			<p { ...useBlockProps() }>© { currentYear }</p>
+            <p { ...useBlockProps() }>© { currentYear }</p>
 		</>        
     );
 }
