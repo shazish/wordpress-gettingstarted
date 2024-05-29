@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -19,7 +19,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -30,31 +30,36 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, TextControl, ToggleControl } from "@wordpress/components";
 
-
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit({ attributes, setAttributes }) {
 	const { showStartingYear, startingYear } = attributes;
 	const currentYear = new Date().getFullYear().toString();
 	console.log(attributes);
 
-    return (
+	return (
 		<>
-            <InspectorControls>
-                <PanelBody title={ __( 'Settings', 'copyright-date-block' ) }>
-					<TextControl
-                        label={ __(
-                            'Starting year',
-                            'copyright-date-block'
-                        ) }
-                        value={ startingYear || '' }
-                        onChange={ ( value ) =>
-                            setAttributes( { startingYear: value } )
-                        }
-                    />
-                </PanelBody>
-            </InspectorControls>
-            <p { ...useBlockProps() }>© { currentYear }</p>
-		</>        
-    );
+			<InspectorControls>
+				<PanelBody title={__("Settings", "copyright-date-block")}>
+					<ToggleControl
+						checked={!!showStartingYear}
+						label={__("Show starting year", "copyright-date-block")}
+						onChange={() =>
+							setAttributes({
+								showStartingYear: !showStartingYear,
+							})
+						}
+					/>
+					{showStartingYear && (
+						<TextControl
+							label={__("Starting year", "copyright-date-block")}
+							value={startingYear || ""}
+							onChange={(value) => setAttributes({ startingYear: value })}
+						/>
+					)}
+				</PanelBody>
+			</InspectorControls>
+			<p {...useBlockProps()}>© {currentYear}</p>
+		</>
+	);
 }
