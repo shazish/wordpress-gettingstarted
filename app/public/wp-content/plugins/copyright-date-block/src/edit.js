@@ -33,14 +33,25 @@ import './editor.scss';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+	const { showStartingYear, startingYear } = attributes;
 	const currentYear = new Date().getFullYear().toString();
+	console.log(attributes);
 
     return (
 		<>
             <InspectorControls>
                 <PanelBody title={ __( 'Settings', 'copyright-date-block' ) }>
-                    Testing
+					<TextControl
+                        label={ __(
+                            'Starting year',
+                            'copyright-date-block'
+                        ) }
+                        value={ startingYear || '' }
+                        onChange={ ( value ) =>
+                            setAttributes( { startingYear: value } )
+                        }
+                    />
                 </PanelBody>
             </InspectorControls>
             <p { ...useBlockProps() }>© { currentYear }</p>
