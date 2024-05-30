@@ -64,6 +64,12 @@ function Edit({
     startingYear
   } = attributes;
   const currentYear = new Date().getFullYear().toString();
+  let displayDate;
+  if (showStartingYear && startingYear) {
+    displayDate = startingYear + '–' + currentYear;
+  } else {
+    displayDate = currentYear;
+  }
   console.log(attributes);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Settings", "copyright-date-block")
@@ -81,7 +87,7 @@ function Edit({
     })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, "\xA9 ", currentYear));
+  }, "\xA9 ", displayDate));
 }
 
 /***/ }),

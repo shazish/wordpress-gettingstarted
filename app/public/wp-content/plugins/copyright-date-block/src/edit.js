@@ -35,6 +35,15 @@ import { PanelBody, TextControl, ToggleControl } from "@wordpress/components";
 export default function Edit({ attributes, setAttributes }) {
 	const { showStartingYear, startingYear } = attributes;
 	const currentYear = new Date().getFullYear().toString();
+
+	let displayDate;
+
+    if ( showStartingYear && startingYear ) {
+            displayDate = startingYear + '–' + currentYear;
+    } else {
+        displayDate = currentYear;
+    }
+
 	console.log(attributes);
 
 	return (
@@ -59,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 				</PanelBody>
 			</InspectorControls>
-			<p {...useBlockProps()}>© {currentYear}</p>
+			<p {...useBlockProps()}>© {displayDate}</p>
 		</>
 	);
 }
