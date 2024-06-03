@@ -17,6 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+add_filter('the_content', 'cdp_modifyPost');
+
+function cdp_modifyPost($content) {
+	return $content . '<p>Ciao.</p>';
+}
+
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
