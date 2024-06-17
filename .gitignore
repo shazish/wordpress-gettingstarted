@@ -4,3 +4,4 @@ app/public/wp-content/plugins/copyright-date-block/build/index.asset.php
 app/public/wp-content/plugins/copyright-date-block/build/index.js.map
 app/public/wp-content/plugins/copyright-date-block/build/index.asset.php
 app/public/wp-content/plugins/copyright-date-block/build/view.asset.php
+logs/php/php-fpm.log
